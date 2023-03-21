@@ -53,7 +53,7 @@ CREATE TABLE `agei_main_task_instance`
     KEY                    `idx_bizUser` (`biz_user_tenant`,`biz_user_org`,`biz_user_id`,`biz_user_key`),
     KEY                    `idx_gmt_create` (`gmt_create`),
     KEY                    `idx_flowTaskId` (`flow_task_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 CREATE TABLE `agei_sub_task_instance`
@@ -105,7 +105,7 @@ CREATE TABLE `agei_sub_task_instance`
     `type`                 varchar(64) NOT NULL,
     PRIMARY KEY (`id`),
     KEY                    `idx_mainTaskId` (`main_task_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 CREATE TABLE `agei_task_specification`
@@ -135,4 +135,4 @@ CREATE TABLE `agei_task_specification`
     `tenant`            varchar(64)  NOT NULL,
     PRIMARY KEY (`id`),
     KEY                 `tenant_namespace_app_env_task_code` (`tenant`,`namespace`,`app`,`env`,`task_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
