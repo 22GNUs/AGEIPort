@@ -7,7 +7,7 @@
     <groupId>com.alibaba</groupId>
     <artifactId>ageiport-parent</artifactId>
     <packaging>pom</packaging>
-    <version>0.1.9</version>
+    <version>0.1.9-T-SNAPSHOT</version>
     <name>AGEIPort</name>
     <description>AGEIPort is alibaba generic export import framework in Java</description>
     <url>https://github.com/alibaba/AGEIPort</url>
@@ -24,14 +24,16 @@
     </modules>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>terminus</id>
+            <name>terminus release repository</name>
+            <url>https://repo.terminus.io/content/repositories/releases/</url>
         </repository>
+        <snapshotRepository>
+            <id>terminus</id>
+            <name>terminus snapshot repository</name>
+            <url>https://repo.terminus.io/content/repositories/snapshots/</url>
+        </snapshotRepository>
     </distributionManagement>
     <developers>
         <developer>
