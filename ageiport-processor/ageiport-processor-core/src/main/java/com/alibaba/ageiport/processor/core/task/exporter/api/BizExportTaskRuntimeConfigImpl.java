@@ -3,6 +3,8 @@ package com.alibaba.ageiport.processor.core.task.exporter.api;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Map;
+
 /**
  * @author lingyi
  */
@@ -20,5 +22,5 @@ public class BizExportTaskRuntimeConfigImpl implements BizExportTaskRuntimeConfi
 
     private String fileType;
 
-
+    private Map<String, Object> attributes;
 }

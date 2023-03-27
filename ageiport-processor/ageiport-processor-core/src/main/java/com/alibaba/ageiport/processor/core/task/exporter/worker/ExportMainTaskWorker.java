@@ -199,7 +199,7 @@ public class ExportMainTaskWorker<QUERY, DATA, VIEW> extends AbstractMainTaskWor
             context.goNextStageEventNew();
             FileStore fileStore = ageiPort.getFileStore();
             String key = mainTask.getMainTaskId() + "." + runtimeConfig.getFileType();
-            fileStore.save(key, fileStream, new HashMap<>());
+            fileStore.save(key, fileStream, runtimeConfig.getAttributes());
             MainTask contextMainTask = context.getMainTask();
 
             String feature = FeatureUtils.putFeature(contextMainTask.getFeature(), MainTaskFeatureKeys.OUTPUT_FILE_KEY, key);

@@ -24,6 +24,6 @@ public interface ExportTaskRuntimeConfig extends TaskRuntimeConfig {
 
     List<ColumnHeader> getColumnHeaders();
 
-    Map<String, String> getAttributes();
+    Map<String, Object> getAttributes();
 
 }

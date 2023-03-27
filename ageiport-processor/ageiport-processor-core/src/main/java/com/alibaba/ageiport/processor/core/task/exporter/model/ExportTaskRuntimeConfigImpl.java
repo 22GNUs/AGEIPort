@@ -30,5 +30,5 @@ public class ExportTaskRuntimeConfigImpl implements ExportTaskRuntimeConfig {
 
     private List<ColumnHeader> columnHeaders;
 
-    private Map<String, String> attributes;
+    private Map<String, Object> attributes;
 }

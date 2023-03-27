@@ -17,6 +17,7 @@ import com.alibaba.ageiport.processor.core.task.importer.slice.ImportSlice;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -69,6 +70,12 @@ public class ImportMainTaskContextImpl<QUERY, DATA, VIEW> extends AbstractMainTa
             taskRuntimeConfig.setFileType(bizRuntimeConfig.getFileType());
         } else {
             taskRuntimeConfig.setFileType(importTaskSpec.getFileType());
+        }
+
+        if (bizRuntimeConfig != null && bizRuntimeConfig.getAttributes() != null) {
+            taskRuntimeConfig.setAttributes(bizRuntimeConfig.getAttributes());
+        } else {
+            taskRuntimeConfig.setAttributes(Collections.emptyMap());
         }
         this.importTaskRuntimeConfig = taskRuntimeConfig;
     }

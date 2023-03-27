@@ -21,5 +21,5 @@ public class BizExportPageImpl implements BizExportPage {
 
     private Integer size;
 
-    private Map<String, String> attributes;
+    private Map<String, Object> attributes;
 }

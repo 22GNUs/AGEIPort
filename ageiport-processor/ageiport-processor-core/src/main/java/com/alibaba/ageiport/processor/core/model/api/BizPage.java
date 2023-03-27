@@ -10,5 +10,5 @@ public interface BizPage extends Serializable {
 
     Integer getNo();
 
-    Map<String, String> getAttributes();
+    Map<String, Object> getAttributes();
 }
