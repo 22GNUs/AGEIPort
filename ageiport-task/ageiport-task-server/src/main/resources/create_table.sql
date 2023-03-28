@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `agei_main_task_instance`;
 CREATE TABLE `agei_main_task_instance`
 (
     `id`                   bigint      NOT NULL AUTO_INCREMENT,
@@ -21,13 +22,13 @@ CREATE TABLE `agei_main_task_instance`
     `feature`              text,
     `flow_order`           int           DEFAULT NULL,
     `flow_task_id`         varchar(64)   DEFAULT NULL,
-    `gmt_create`           datetime(6) DEFAULT NULL,
-    `gmt_dispatch`         datetime(6) DEFAULT NULL,
-    `gmt_execute`          datetime(6) DEFAULT NULL,
-    `gmt_expired`          datetime(6) DEFAULT NULL,
-    `gmt_finished`         datetime(6) DEFAULT NULL,
-    `gmt_modified`         datetime(6) DEFAULT NULL,
-    `gmt_start`            datetime(6) DEFAULT NULL,
+    `gmt_create`           datetime(6)   DEFAULT NULL,
+    `gmt_dispatch`         datetime(6)   DEFAULT NULL,
+    `gmt_execute`          datetime(6)   DEFAULT NULL,
+    `gmt_expired`          datetime(6)   DEFAULT NULL,
+    `gmt_finished`         datetime(6)   DEFAULT NULL,
+    `gmt_modified`         datetime(6)   DEFAULT NULL,
+    `gmt_start`            datetime(6)   DEFAULT NULL,
     `host`                 varchar(64)   DEFAULT NULL,
     `log`                  varchar(4096) DEFAULT NULL,
     `main_task_id`         varchar(64) NOT NULL,
@@ -49,13 +50,17 @@ CREATE TABLE `agei_main_task_instance`
     `type`                 varchar(64) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY `uk_mainTaskId` (`main_task_id`),
-    KEY                    `idx_main_task` (`tenant`,`namespace`,`app`,`env`,`code`),
-    KEY                    `idx_bizUser` (`biz_user_tenant`,`biz_user_org`,`biz_user_id`,`biz_user_key`),
-    KEY                    `idx_gmt_create` (`gmt_create`),
-    KEY                    `idx_flowTaskId` (`flow_task_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    KEY `idx_main_task` (`tenant`, `namespace`, `app`, `env`, `code`),
+    KEY `idx_bizUser` (`biz_user_tenant`, `biz_user_org`, `biz_user_id`, `biz_user_key`),
+    KEY `idx_gmt_create` (`gmt_create`),
+    KEY `idx_flowTaskId` (`flow_task_id`)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 1
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
 
 
+DROP TABLE IF EXISTS `agei_sub_task_instance`;
 CREATE TABLE `agei_sub_task_instance`
 (
     `id`                   bigint      NOT NULL AUTO_INCREMENT,
@@ -79,13 +84,13 @@ CREATE TABLE `agei_sub_task_instance`
     `feature`              text,
     `flow_order`           int           DEFAULT NULL,
     `flow_task_id`         varchar(64)   DEFAULT NULL,
-    `gmt_create`           datetime(6) DEFAULT NULL,
-    `gmt_dispatch`         datetime(6) DEFAULT NULL,
-    `gmt_execute`          datetime(6) DEFAULT NULL,
-    `gmt_expired`          datetime(6) DEFAULT NULL,
-    `gmt_finished`         datetime(6) DEFAULT NULL,
-    `gmt_modified`         datetime(6) DEFAULT NULL,
-    `gmt_start`            datetime(6) DEFAULT NULL,
+    `gmt_create`           datetime(6)   DEFAULT NULL,
+    `gmt_dispatch`         datetime(6)   DEFAULT NULL,
+    `gmt_execute`          datetime(6)   DEFAULT NULL,
+    `gmt_expired`          datetime(6)   DEFAULT NULL,
+    `gmt_finished`         datetime(6)   DEFAULT NULL,
+    `gmt_modified`         datetime(6)   DEFAULT NULL,
+    `gmt_start`            datetime(6)   DEFAULT NULL,
     `host`                 varchar(64)   DEFAULT NULL,
     `log`                  varchar(4096) DEFAULT NULL,
     `main_task_id`         varchar(64)   DEFAULT NULL,
@@ -104,10 +109,13 @@ CREATE TABLE `agei_sub_task_instance`
     `trace_id`             varchar(64)   DEFAULT NULL,
     `type`                 varchar(64) NOT NULL,
     PRIMARY KEY (`id`),
-    KEY                    `idx_mainTaskId` (`main_task_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    KEY `idx_mainTaskId` (`main_task_id`)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 1
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
 
-
+DROP TABLE IF EXISTS `agei_task_specification`;
 CREATE TABLE `agei_task_specification`
 (
     `id`                bigint       NOT NULL AUTO_INCREMENT,
@@ -116,8 +124,8 @@ CREATE TABLE `agei_task_specification`
     `creator_name`      varchar(64) DEFAULT NULL,
     `env`               varchar(64)  NOT NULL,
     `feature`           text,
-    `gmt_create`        datetime(6) NOT NULL,
-    `gmt_modified`      datetime(6) NOT NULL,
+    `gmt_create`        datetime(6)  NOT NULL,
+    `gmt_modified`      datetime(6)  NOT NULL,
     `modifier_id`       varchar(64) DEFAULT NULL,
     `modifier_name`     varchar(64) DEFAULT NULL,
     `namespace`         varchar(64)  NOT NULL,
@@ -134,5 +142,8 @@ CREATE TABLE `agei_task_specification`
     `task_type`         varchar(64)  NOT NULL,
     `tenant`            varchar(64)  NOT NULL,
     PRIMARY KEY (`id`),
-    KEY                 `tenant_namespace_app_env_task_code` (`tenant`,`namespace`,`app`,`env`,`task_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    KEY `tenant_namespace_app_env_task_code` (`tenant`, `namespace`, `app`, `env`, `task_code`)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 1
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_general_ci;
