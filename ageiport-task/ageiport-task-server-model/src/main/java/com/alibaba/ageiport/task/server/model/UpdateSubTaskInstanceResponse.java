@@ -8,7 +8,7 @@ import lombok.ToString;
 /**
  * @author lingyi
  */
-@ToString
+@ToString(callSuper = true)
 @Setter
 @Getter
 public class UpdateSubTaskInstanceResponse extends Response {

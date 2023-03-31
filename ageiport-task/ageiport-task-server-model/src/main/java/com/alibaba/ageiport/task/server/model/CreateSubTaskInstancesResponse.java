@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author lingyi
  */
-@ToString
+@ToString(callSuper = true)
 @Setter
 @Getter
 public class CreateSubTaskInstancesResponse extends Response {
