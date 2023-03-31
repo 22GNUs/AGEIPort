@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * @author lingyi
  */
-@ToString
+@ToString(callSuper = true)
 @Setter
 @Getter
 public class GetSubTaskInstanceResponse extends Response {

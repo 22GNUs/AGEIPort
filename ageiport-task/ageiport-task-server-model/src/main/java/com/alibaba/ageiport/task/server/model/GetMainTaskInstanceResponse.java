@@ -11,7 +11,7 @@ import java.util.Date;
  * @author lingyi
  */
 
-@ToString
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class GetMainTaskInstanceResponse extends Response {
