@@ -43,6 +43,7 @@ public class HttpTaskServerClient implements TaskServerClient {
                 .callTimeout(timeoutMs, TimeUnit.MILLISECONDS)
                 .connectTimeout(timeoutMs, TimeUnit.MILLISECONDS)
                 .readTimeout(timeoutMs, TimeUnit.MILLISECONDS)
+                .retryOnConnectionFailure(true)
                 .writeTimeout(timeoutMs, TimeUnit.MILLISECONDS).build();
     }
 
@@ -154,6 +155,7 @@ public class HttpTaskServerClient implements TaskServerClient {
         Request httpRequest = new Request.Builder()
                 .url(url)
                 .post(body)
+                .addHeader("Connection", "close")
                 .build();
         try (Response httpResponse = client.newCall(httpRequest).execute()) {
             ResponseBody responseBody = httpResponse.body();
